@@ -90,6 +90,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\ofxFF_Add.cpp" />
+    <ClCompile Include="..\src\ofxFF_Mul.cpp" />
     <ClCompile Include="..\src\ofxFloatField.cpp" />
     <ClCompile Include="..\src\ofxFloatFieldRadial.cpp" />
     <ClCompile Include="..\src\ofxFloatFieldRadialBandPass.cpp" />
@@ -106,6 +108,8 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\ofxFF_Add.h" />
+    <ClInclude Include="..\src\ofxFF_Mul.h" />
     <ClInclude Include="..\src\ofxFloatField.h" />
     <ClInclude Include="..\src\ofxFloatFieldRadial.h" />
     <ClInclude Include="..\src\ofxFloatFieldRadialBandPass.h" />

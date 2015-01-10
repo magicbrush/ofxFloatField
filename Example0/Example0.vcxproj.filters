@@ -43,6 +43,12 @@
     <ClCompile Include="..\src\ofxFloatFieldRadialBandPass.cpp">
       <Filter>addons\ofxFloatField</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ofxFF_Add.cpp">
+      <Filter>addons\ofxFloatField</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxFF_Mul.cpp">
+      <Filter>addons\ofxFloatField</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -102,6 +108,12 @@
       <Filter>addons\ofxFloatField</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ofxFloatFieldRadialBandPass.h">
+      <Filter>addons\ofxFloatField</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxFF_Add.h">
+      <Filter>addons\ofxFloatField</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxFF_Mul.h">
       <Filter>addons\ofxFloatField</Filter>
     </ClInclude>
   </ItemGroup>

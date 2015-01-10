@@ -6,6 +6,8 @@ ofxFloatField::ofxFloatField( ofMatrix4x4 PrevMat, float PostScl )
 	setPostScale(PostScl);
 
 	PostScale.set("PostScale",1.0f,0.01f,100.0f);
+	PostPow.set("PostPower",1.0f,-10.0f,10.0f);
+	PowBeforeScale.set("PowerBeforeScale",true,false,true);
 
 	G.setName("ofxFloatFieldParams");
 }
@@ -18,8 +20,19 @@ ofxFloatField::~ofxFloatField()
 float ofxFloatField::get( ofPoint P )
 {
 	ofPoint P1 = P*PreTF;
-	float V = _get(P1);
-	float V2 = V*PostScale;
+	float V;
+	V = _get(P1);
+	float V2;
+	if(PowBeforeScale)
+	{
+		float Vt = pow(V,PostPow);
+		V2 = Vt * PostScale;
+	}
+	else
+	{
+		float Vt = V*PostScale;
+		V2 = pow(Vt,PostPow);
+	}
 	return V2;
 }
 
@@ -46,6 +59,8 @@ ofParameter<float> ofxFloatField::getPostScale() const
 ofParameterGroup ofxFloatField::getParamGroup()
 {
 	G.add(PostScale);
+	G.add(PostPow);
+	G.add(PowBeforeScale);
 	addToParamGroup(G);
 	return G;
 }
@@ -53,4 +68,23 @@ ofParameterGroup ofxFloatField::getParamGroup()
 void ofxFloatField::addToParamGroup( ofParameterGroup& G )
 {
 
+}
+
+float ofxFloatField::_get( ofPoint P )
+{
+	float v;
+	if(FParent.use_count()>0)
+	{
+		v = FParent->get(P);
+	}
+	else
+	{
+		v = 1.0f;
+	}	
+	return 1.0f;
+}
+
+void ofxFloatField::setParentField( ofPtr<ofxFloatField> pFParent )
+{
+	FParent = pFParent;
 }

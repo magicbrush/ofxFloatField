@@ -3,6 +3,8 @@
 #include "ofxFloatFieldRadial.h"
 #include "ofxFloatFieldRadialSin.h"
 #include "ofxFloatFieldRadialBandPass.h"
+#include "ofxFF_Add.h"
+#include "ofxFF_Mul.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -62,6 +64,22 @@ void ofApp::keyPressed(int key){
 	else if(OF_KEY_F3==key)
 	{
 		FF.reset(new ofxFloatFieldRadialBandPass);
+		initGUI();
+	}
+	else if(OF_KEY_F4==key)
+	{
+		ofPtr<ofxFloatField> pF[2];
+		pF[0].reset(new ofxFloatFieldRadial);
+		pF[1].reset(new ofxFloatFieldRadialSin);
+		FF.reset(new ofxFF_Add(pF[0],pF[1]));
+		initGUI();
+	}
+	else if(OF_KEY_F5==key)
+	{
+		ofPtr<ofxFloatField> pF[2];
+		pF[0].reset(new ofxFloatFieldRadialBandPass);
+		pF[1].reset(new ofxFloatFieldRadial);
+		FF.reset(new ofxFF_Mul(pF[0],pF[1]));
 		initGUI();
 	}
 
